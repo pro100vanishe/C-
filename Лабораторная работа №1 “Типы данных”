@@ -1,0 +1,131 @@
+#include <iostream>
+#include <climits>
+
+using namespace std;
+
+int main()
+{
+    setlocale(LC_ALL, "Russian");
+    cout << "Целочисленные типы:" << endl;
+
+    cout << endl;
+
+    cout << "Тип int:" << endl;
+    cout << "Размер: " << sizeof(int) << " byte(s)" << endl;
+    cout << "Минимум: " << numeric_limits<int>::min() << "; ";
+    cout << "Максимум: " << numeric_limits<int>::max() << endl;
+
+    cout << endl;
+
+    cout << "Тип unsigned int:" << endl;
+    cout << "Размер: " << sizeof(unsigned int) << " byte(s)" << endl;
+    cout << "Минимум: " << numeric_limits<unsigned int>::min() << "; ";
+    cout << "Максимум: " << numeric_limits<unsigned int>::max() << endl;
+
+    cout << endl;
+
+    cout << "Тип short:" << endl;
+    cout << "Размер: " << sizeof(short) << " byte(s)" << endl;
+    cout << "Минимум: " << numeric_limits<short>::min() << "; ";
+    cout << "Максимум: " << numeric_limits<short>::max() << endl;
+
+    cout << endl;
+
+    cout << "Тип unsigned short:" << endl;
+    cout << "Размер: " << sizeof(unsigned short) << " byte(s)" << endl;
+    cout << "Минимум: " << numeric_limits<unsigned short>::min() << "; ";
+    cout << "Максимум: " << numeric_limits<unsigned short>::max() << endl;
+
+    cout << endl;
+
+    cout << "Тип long:" << endl;
+    cout << "Размер: " << sizeof(long) << " byte(s)" << endl;
+    cout << "Минимум: " << numeric_limits<long>::min() << "; ";
+    cout << "Максимум: " << numeric_limits<long>::max() << endl;
+
+    cout << endl;
+
+    cout << "Тип unsigned long:" << endl;
+    cout << "Размер: " << sizeof(unsigned long) << " byte(s)" << endl;
+    cout << "Минимум: " << numeric_limits<unsigned long>::min() << "; ";
+    cout << "Максимум: " << numeric_limits<unsigned long>::max() << endl;
+
+    cout << endl;
+
+    cout << "Тип long long:" << endl;
+    cout << "Размер: " << sizeof(long long) << " byte(s)" << endl;
+    cout << "Минимум: " << numeric_limits<long long>::min() << "; ";
+    cout << "Максимум: " << numeric_limits<long long>::max() << endl;
+
+    cout << endl;
+
+    cout << "Тип unsigned long long:" << endl;
+    cout << "Размер: " << sizeof(unsigned long long) << " byte(s)" << endl;
+    cout << "Минимум: " << numeric_limits<unsigned long long>::min() << "; ";
+    cout << "Максимум: " << numeric_limits<unsigned long long>::max() << endl;
+
+    cout << endl;
+
+    cout << "Типы с плавающей запятой:" << endl;
+
+    cout << endl;
+
+    cout << "Тип float:" << endl;
+    cout << "Размер: " << sizeof(float) << " byte(s)" << endl;
+    cout << "Минимум: " << numeric_limits<float>::min() << "; ";
+    cout << "Максимум: " << numeric_limits<float>::max() << endl;
+
+    cout << endl;
+
+    cout << "Тип double:" << endl;
+    cout << "Размер: " << sizeof(double) << " byte(s)" << endl;
+    cout << "Минимум: " << numeric_limits<double>::min() << "; ";
+    cout << "Максимум: " << numeric_limits<double>::max() << endl;
+
+    cout << endl;
+
+    cout << "Тип long double:" << endl;
+    cout << "Размер: " << sizeof(long double) << " byte(s)" << endl;
+    cout << "Минимум: " << numeric_limits<long double>::min() << "; ";
+    cout << "Максимум: " << numeric_limits<long double>::max() << endl;
+
+    cout << endl;
+
+    cout << " Символьные типы данных:" << endl;
+
+    cout << endl;
+
+    cout << "Тип char:" << endl;
+    cout << "Размер: " << sizeof(char) << " byte(s)" << endl;
+    cout << "Минимум: " << numeric_limits<char>::min() << "; ";
+    cout << "Максимум: " << numeric_limits<char>::max() << endl;
+
+    cout << endl;
+
+    cout << "Тип wchar_t:" << endl;
+    cout << "Размер: " << sizeof(wchar_t) << " byte(s)" << endl;
+    cout << "Минимум: " << numeric_limits<wchar_t>::min() << "; ";
+    cout << "Максимум: " << numeric_limits<wchar_t>::max() << endl;
+   
+    cout << endl;
+
+    cout << "Логический тип данных:" << endl;
+
+    cout << endl;
+
+    cout << "Тип bool:" << endl;
+    cout << "Размер: " << sizeof(bool) << " byte(s)" << endl;
+    cout << "Минимум: " << numeric_limits<bool>::min() << "; ";
+    cout << "Максимум: " << numeric_limits<bool>::max() << endl;
+    cout << "false == 0 and true == 1" << endl;
+
+    cout << endl;
+
+    cout << " Другие типы данных. Кроме перечисленных, в C++ есть и другие типы данных, такие как :";
+    cout << "void : Специальный тип, который указывает на отсутствие значения.Используется, например, в функциях, которые не возвращают значения.";
+    cout << "Структуры(struct) и Классы(class) : Определяемые пользователем типы, которые могут содержать переменные различных типов и функции.";
+   
+    
+
+    return 0;
+}
