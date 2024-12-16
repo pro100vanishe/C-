@@ -1,0 +1,76 @@
+// номер 1
+#include <iostream>
+using namespace std;
+int main() {
+    setlocale(LC_ALL, "Russian");
+    int a, b, c;
+    cin >> a >> b >> c;
+    if (a % b == 0 && b > c) {
+        int d = a / b + c;
+        cout << d;
+    }
+    else if (a % b == 0 && b < c) {
+        int d = a / b - c;
+        cout << d;
+    }
+    else {
+        int d = (a + b) * c;
+        cout << d;
+    }
+    return 0;
+}
+// номер 2
+
+#include <iostream>
+
+int main() {
+    setlocale(LC_ALL, "Russian");
+    int day;
+    std::cout << "Введите номер дня недели (1-7): ";
+    std::cin >> day;
+
+    switch (day) {
+    case 1:
+        std::cout << "Понедельник" << std::endl;
+        break;
+    case 2:
+        std::cout << "Вторник" << std::endl;
+        break;
+    case 3:
+        std::cout << "Среда" << std::endl;
+        break;
+    case 4:
+        std::cout << "Четверг" << std::endl;
+        break;
+    case 5:
+        std::cout << "Пятница" << std::endl;
+        break;
+    case 6:
+        std::cout << "Суббота" << std::endl;
+        break;
+    case 7:
+        std::cout << "Воскресенье" << std::endl;
+        break;
+    default:
+        std::cout << "Некорректный ввод" << std::endl;
+        break;
+    }
+
+    return 0;
+}
+
+// номер 3 
+
+#include <iostream>
+using namespace std;
+int main() {
+    setlocale(LC_ALL, "Russian");
+    int x;
+    cout << "Введите значение 1 или -1:";
+    cin >> x;
+    if (x == -1) cout << "Negative number";
+    else if (x == 1)  cout << "Positive number";
+    else cout << "Некоректный ввод. Значение должно быть либо -1, либо 1.";
+    return 0;
+}
+// Простота и понятность. Легкая расширяемость. Обработка некоректного ввода. Читаемость.
