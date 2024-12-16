@@ -1,1 +1,18 @@
+#include <iostream>
 
+int main() {
+    setlocale(LC_ALL, "Russian");
+
+    unsigned int x; // Исходное число
+    int i; // Позиция бита
+
+    std::cout << "Введите число x: ";
+    std::cin >> x;
+    std::cout << "Введите позицию бита i (0 для младшего бита): ";
+    std::cin >> i;
+
+    // Устанавливаем i-ый бит в 1
+    x = x | (1 << i);
+
+    std::cout << "Число после установки " << i << "-го бита в 1: " << x << std::endl;
+    return 0;
