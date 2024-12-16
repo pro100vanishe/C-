@@ -1,0 +1,61 @@
+#include <iostream>
+#include <limits>
+
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "Russian");
+
+    int a, b;
+    cout << "Введите начало последовательности (a): ";
+    cin >> a;
+    cout << "Введите конец последовательности (b): ";
+    cin >> b;
+
+    int sum = 0;                     
+    int min_value = numeric_limits<int>::max(); 
+    int min_index = -1;              
+    int index = 0;                   
+
+    for (int i = a; i <= b; i++) {   
+        index++;                    
+        if (i % 3 == 0 || i % 7 == 0) { 
+            sum += i;                   
+            if (i < min_value) {       
+                min_value = i;
+                min_index = index;
+            }
+        }
+    }
+
+    if (min_index != -1) {
+        cout << "Сумма чисел, делящихся на 3 или 7: " << sum << endl;
+        cout << "Наименьшее из таких чисел: " << min_value << endl;
+        cout << "Номер этого числа в последовательности: " << min_index << endl;
+    }
+    else {
+        cout << "Нет чисел, делящихся на 3 или 7." << endl;
+    }
+
+    return 0;
+}
+// номер 2 
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "Russian");
+    int n, a, composition;
+    cout << "Введите число n:";
+    cin >> n;
+    composition = 1;
+    while (n > 0) {
+        a = n % 10;
+        if (a % 2 == 0) composition *= a;
+        n = n / 10;
+    }
+    cout << composition;
+ 
+    return 0;
+}
