@@ -1,0 +1,126 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+string con = "BCDFGHJKLMNPQRSTVWXYZbcdfghjklmnpqrstvwxyz";
+string vowel = "aeiouyAEIOUY";
+string alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+bool isPalindrome(const string& word) {
+    int n = word.length();
+    for (int i = 0; i < n / 2; i++) {
+        if (word[i] != word[n - i - 1]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+int countConsonants(const string& word) {
+    int count = 0;
+    for (int i = 0; i < word.length(); i++) {
+        for (int j = 0; j < con.length(); j++) {
+            if (word[i] == con[j]) {
+                count++;
+                break;
+            }
+        }
+    }
+    return count;
+}
+
+string removeVowels(const string& word) {
+    string result = "";
+    for (int i = 0; i < word.length(); i++) {
+        bool is_vowel = false;
+        for (int j = 0; j < vowel.length(); j++) {
+            if (word[i] == vowel[j]) {
+                is_vowel = true;
+                break;
+            }
+        }
+        if (!is_vowel) {
+            result += word[i];
+        }
+    }
+    return result;
+}
+
+void sortWordsByConsonants(string words[], int consonant_counts[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (consonant_counts[j] < consonant_counts[j + 1]) {
+                int temp_count = consonant_counts[j];
+                consonant_counts[j] = consonant_counts[j + 1];
+                consonant_counts[j + 1] = temp_count;
+
+                string temp_word = words[j];
+                words[j] = words[j + 1];
+                words[j + 1] = temp_word;
+            }
+        }
+    }
+}
+
+void sortWordsReverseAlphabetically(string words[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (words[j] < words[j + 1]) {
+                string temp = words[j];
+                words[j] = words[j + 1];
+                words[j + 1] = temp;
+            }
+        }
+    }
+}
+
+void program() {
+    ifstream file("фыово.txt");
+    if (!file.is_open()) {
+        cout << "Все плохо!" << endl;
+        return;
+    }
+
+    string words[2000];
+    int count_words = 0;
+    bool has_palindrome = false;
+
+    while (file >> words[count_words]) {
+        count_words++;
+    }
+    file.close();
+
+    for (int i = 0; i < count_words; i++) {
+        if (words[i].length() > 1 && isPalindrome(words[i])) {
+            has_palindrome = true;
+            break;
+        }
+    }
+
+    if (has_palindrome) {
+        for (int i = 0; i < count_words; i++) {
+            words[i] = removeVowels(words[i]);
+        }
+        sortWordsReverseAlphabetically(words, count_words);
+        for (int i = 0; i < count_words; i++) {
+            cout << words[i] << endl;
+        }
+    }
+    else {
+        int consonant_counts[2000];
+        for (int i = 0; i < count_words; i++) {
+            consonant_counts[i] = countConsonants(words[i]);
+        }
+        sortWordsByConsonants(words, consonant_counts, count_words);
+        for (int i = 0; i < count_words; i++) {
+            cout << words[i] << consonant_counts[i] << ")" << endl;
+        }
+    }
+}
+
+int main() {
+    setlocale(LC_ALL, "Russian");
+    program();
+    return 0;
+}
