@@ -1,0 +1,140 @@
+#include <iostream>
+
+using namespace std;
+
+struct Node {
+    int info;
+    Node* next;
+};
+
+void print_list(Node* top) {
+    Node* p = top;
+    while (p != nullptr) {
+        cout << p->info << " ";
+        p = p->next;
+    }
+}
+
+bool startsWithOne(int number) {
+    while (number >= 10) {
+        number /= 10;
+    }
+    return number == 1;
+}
+
+bool isPrime(int number) {
+    if (number < 2) return false;
+    for (int i = 2; i * i <= number; i++) {
+        if (number % i == 0) return false;
+    }
+    return true;
+}
+
+void sort_list(Node* top) {
+    for (Node* a = top; a != nullptr && a->next != nullptr; a = a->next) {
+        for (Node* b = a->next; b != nullptr; b = b->next) {
+            if (a->info > b->info) swap(a->info, b->info);
+        }
+    }
+}
+
+void duplicate_primes(Node* top) {
+    Node* p = top;
+    while (p != nullptr) {
+        if (isPrime(p->info)) {
+            Node* q = new Node;
+            q->info = p->info;
+            q->next = p->next;
+            p->next = q;
+            p = q->next;
+        }
+        else {
+            p = p->next;
+        }
+    }
+}
+
+void remove_multiples_of_three(Node*& top) {
+    while (top != nullptr && top->info % 3 == 0 && top->info != 3) {
+        Node* temp = top->next;
+        delete top;
+        top = temp;
+    }
+
+    Node* p = top;
+    while (p != nullptr && p->next != nullptr) {
+        if (p->next->info % 3 == 0 && p->next->info != 3) {
+            Node* temp = p->next;
+            p->next = temp->next;
+            delete temp;
+        }
+        else {
+            p = p->next;
+        }
+    }
+}
+
+void delete_list(Node* top) {
+    Node* p = top;
+    while (p != nullptr) {
+        Node* temp = p->next;
+        delete p;
+        p = temp;
+    }
+}
+
+void program() {
+    Node* top = nullptr;
+    int n;
+    cin >> n;
+
+    int x;
+    cin >> x;
+
+    top = new Node;
+    top->info = x;
+    top->next = nullptr;
+
+    Node* pp = top;
+
+    for (int i = 1; i < n; i++) {
+        cin >> x;
+        Node* p = new Node;
+        pp->next = p;
+        p->info = x;
+        p->next = nullptr;
+        pp = p;
+    }
+
+    bool has_number_starting_with_one = false;
+    Node* p = top;
+
+    while (p != nullptr) {
+        if (startsWithOne(p->info)) {
+            has_number_starting_with_one = true;
+            break;
+        }
+        p = p->next;
+    }
+
+    if (has_number_starting_with_one) {
+        sort_list(top);
+        cout << "Список после сортировки по неубыванию: ";
+        print_list(top);
+    }
+    else {
+        remove_multiples_of_three(top);
+        duplicate_primes(top);
+        cout << "Список после удаления кратных трём (кроме 3) и дублирования простых чисел: ";
+        print_list(top);
+    }
+
+    delete_list(top);
+}
+
+int main() {
+    setlocale(LC_ALL, "Russian");
+
+    program();
+    return 0;
+}
